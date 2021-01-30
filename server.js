@@ -4,15 +4,18 @@ const express = require("express");
 const perimeterx = require("perimeterx-node-express");
 const path = require("path");
 
-const server = express();
+const { APPID, SECRET, TOKEN, PORT } = require("./config/keys.js");
 
-const PORT = 3000;
+const server = express();
 
 /* px-module and cookie parser need to be initiated before any route usage */
 const pxConfig = {
-  pxAppId: "",
-  cookieSecretKey: "",
-  authToken: "",
+  pxAppId: APPID,
+  cookieSecretKey: SECRET,
+  authToken: TOKEN,
+  enableModule: true,
+  moduleMode: 1,
+  debugMode: true,
 };
 perimeterx.init(pxConfig);
 
